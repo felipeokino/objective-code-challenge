@@ -39,7 +39,7 @@ const BackFace = ({series}: BackFaceProps) => {
   }, [])
 
   return (
-  <div className="bg-[#333] w-[20rem] h-full relative max-sm:h-[25rem] rounded-b-xl rounded-xl px-3 pt-4">
+  <div className="bg-[#333] w-full h-full relative max-sm:h-[25rem] rounded-b-xl rounded-xl px-3 pt-4">
       <span className='text-3xl text-center w-full block rounded-xl bg-amber-600'>Series</span>
     <div className="mt-3 max-h-[30rem] overflow-y-auto ">
       <ul className="mt-1 ">
@@ -97,7 +97,7 @@ const HeroCard = ({ hero }: HeroCardProps) => {
     <>
       <div
         onClick={() => setClicked(!clicked)}
-        className={`max-sm:h-[25rem] max-sm:w-full rounded-xl w-72  lg:h-[40rem] relative flex flex-col justify-start items-center hover:scale-105 transition-all duration-500 z-10 hover:z-[12] hover: shadow-black/90 hover:shadow-lg shadow-sm cursor-pointer`}
+        className={`max-sm:h-[25rem] max-sm:w-[75vw] rounded-xl w-72  lg:h-[40rem] relative flex flex-col justify-start items-center hover:scale-105 transition-all duration-500 z-10 hover:z-[12] hover: shadow-black/90 hover:shadow-lg shadow-sm cursor-pointer`}
       >
         <div className="bg-[#333] text-white/80 w-[80%] text-center text-xl absolute top-4 left-1/2 -translate-x-1/2 rounded-tl-xl rounded-br-xl  shadow-black/75 shadow-lg p-2">
           {name}
