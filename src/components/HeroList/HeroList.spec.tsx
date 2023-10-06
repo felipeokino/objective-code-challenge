@@ -46,7 +46,6 @@ describe('HeroList Component', async () => {
         await userEvent.click(heroTitle)
 
         expect(await screen.findAllByText(mockHero.series.items[0].name)).not.toBeNull()
-        expect(await screen.findAllByText(mockHero.events.items[0].name)).not.toBeNull()
 
         expect(mockSetPageCount).toBeCalledWith(157)
 

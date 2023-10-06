@@ -18,8 +18,7 @@ const BackFace = ({series}: BackFaceProps) => {
   const fetchSerieImage = async (url: string, index: number): Promise<void> => {
     let imageUrl = "";
     
-    await http
-      .get<
+    await http.get<
         AxiosResponse<{
           data: {
             results: { thumbnail: { path: string; extension: string } }[];
