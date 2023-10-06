@@ -12,6 +12,8 @@ axios.defaults.params = {
   ts,
   hash
 };
+const areaDataCache:{[key: string]: any} = {};
+
 
 const queryParamsConstructor = (params: { [key: string]: any; }) => {
   const urlParams = new URLSearchParams();
@@ -24,7 +26,11 @@ const queryParamsConstructor = (params: { [key: string]: any; }) => {
 };
 
 export default class Http implements IHttp {
-  get<T>(url: string, queryParams: { [key: string]: any }): Promise<T> {
-    return axios.get(`${url}?${queryParamsConstructor(queryParams)}`);
+  async get<T>(url: string, queryParams: { [key: string]: any }): Promise<T> {
+    if (!areaDataCache[`${url}?${queryParamsConstructor(queryParams)}`]){
+      areaDataCache[`${url}?${queryParamsConstructor(queryParams)}`] = (await axios.get(`${url}?${queryParamsConstructor(queryParams)}`))
+      return axios.get(`${url}?${queryParamsConstructor(queryParams)}`);
+    }
+    return areaDataCache[`${url}?${queryParamsConstructor(queryParams)}`]
   }
 }
