@@ -26,6 +26,10 @@ Install dependencies
 (pnpm | npm | yarn) install
 ~~~
 
+> **Note**
+>Create .env file following env.example
+>
+
 Start the server  
 
 ~~~bash  
