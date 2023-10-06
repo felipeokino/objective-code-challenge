@@ -6,7 +6,7 @@ import { AxiosResponse } from "axios";
 import { LIMIT_PER_PAGE } from "../../utils/constants";
 import { getActualPage, getSearchParams } from "../../utils";
 import Pagination from "../Pagination";
-import { THero, TResponse } from '../../types/hero';
+import { THero, TResponse } from "../../types/hero";
 
 const HeroList = () => {
   const { http, pageCount, setPageCount } = useContext(Context);
@@ -19,24 +19,26 @@ const HeroList = () => {
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const params:{[key: string]: string|number|undefined} = {
-        offset: +(actualPage && actualPage-1) * LIMIT_PER_PAGE,
+      const params: { [key: string]: string | number | undefined } = {
+        offset: +(actualPage && actualPage - 1) * LIMIT_PER_PAGE,
         limit: LIMIT_PER_PAGE,
-        nameStartsWith: searchParams.split('=')[1]||''
-      }
-      if (!searchParams)
-        delete params.nameStartsWith
+        nameStartsWith: searchParams.split("=")[1] || "",
+      };
+      if (!searchParams) delete params.nameStartsWith;
 
-      const response = await http.get<AxiosResponse<TResponse>>("characters", params).catch((err) => err);
-      
+      const response = await http
+        .get<AxiosResponse<TResponse>>("characters", params)
+        .catch((err) => err);
+
       if (response && response.status === 200) {
         setResults(response.data.data.results);
-  
-        if (pageCount === 0) setPageCount(Math.ceil((response.data.data.total)/LIMIT_PER_PAGE));
-  
+
+        if (pageCount === 0)
+          setPageCount(Math.ceil(response.data.data.total / LIMIT_PER_PAGE));
+
         setTimeout(() => {
-            setLoading(false)
-        }, 300)
+          setLoading(false);
+        }, 300);
       }
     })();
   }, []);
@@ -51,9 +53,28 @@ const HeroList = () => {
 
   return (
     <section className="w-full mt-10">
-      <ul className="w-full grid grid-cols-5 gap-10 max-sm:flex max-sm:flex-col items-center justify-between max-sm:justify-center flex-wrap gap-7">
+      <ul
+        className="
+          w-full 
+          grid 
+          grid-cols-5
+          
+          max-[890px]:flex
+          max-[1279px]:grid-cols-3
+          min-[1280px]:max-[1560px]:grid-cols-4
+          
+          max-sm:flex 
+          max-sm:flex-col 
+          items-center 
+          justify-between 
+          max-sm:justify-center 
+          flex-wrap gap-7"
+      >
         {results.map((hero, idx) => (
-          <li key={hero.name} className={`${idx === results.length-1 && 'flex-grow'}`}>
+          <li
+            key={hero.name}
+            
+          >
             <HeroCard hero={hero} />
           </li>
         ))}

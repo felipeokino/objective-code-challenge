@@ -16,7 +16,7 @@ const handleNavigateStep = (goto: number) => {
 }
 
   return (
-    <div className='flex gap-3 font-light text-sm justify-center my-6'>
+    <div className='flex gap-3 font-light text-sm justify-center mt-10 pb-14'>
         <button disabled={actualPage===1} className="p-3 flex items-center justify-center w-10 h-10 rounded-xl bg-amber-700 cursor-pointer shadow shadow-black border-none disabled:bg-amber-900" onClick={() => handleNavigateStep(actualPage-1)}>
             <ArrowLeft  />
         </button>

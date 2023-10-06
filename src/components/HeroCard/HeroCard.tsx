@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { THero } from "../../mocks/resultsMock";
+import { THero } from "../../types/hero";
 import { TDefaultInfo } from '../../types/hero';
 
 type HeroCardProps = {
